@@ -9,8 +9,12 @@ import {
     useContext
 } from "react";
 
+type ContextValueProp = {
+    token: string|null,
+    setToken: (newToken:string) => void
+};
 
-const AuthContext = createContext();
+const AuthContext = createContext<ContextValueProp>();
 
 const TOKENKEY = 'token';
 
