@@ -1,6 +1,6 @@
 import { Tabs, TabsList, TabsContent, TabsTrigger } from "@/components/ui/tabs";
-import LoginForm from '@/components/auth/LoginForm.tsx';
-
+import LoginForm from './LoginForm';
+import SignUpForm from  './SignUpForm';
 
 /**
 * The entrypoint for the auth page.
@@ -16,7 +16,9 @@ export default function Auth() {
                 <TabsContent value="login">
                     <LoginForm />
                 </TabsContent>
-                <TabsContent value="signup"></TabsContent>
+                <TabsContent value="signup">
+                    <SignUpForm />
+                </TabsContent>
             </Tabs>
         </div>
     )

@@ -1,6 +1,6 @@
 import { Toaster } from './components/ui/toaster'
 import './index.css'
-import Auth from './pages/Auth'
+import Auth from './auth/AuthPage'
 
 function App() {
 
