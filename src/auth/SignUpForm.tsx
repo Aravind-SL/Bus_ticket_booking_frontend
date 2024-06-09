@@ -7,9 +7,14 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from '@/components/ui/use-toast';
 import { Button } from '@/components/ui/button';
 import { ReloadIcon } from '@radix-ui/react-icons';
-
+import { AuthResponse } from './LoginForm';
+import axios, { AxiosResponse } from 'axios';
+import { API_URL } from '@/consts';
+import { useAuth } from './AuthProvider';
 
 const LoginFormSchema = z.object({
+    firstName: z.string(),
+    lastName: z.string(),
     email: z.string().email(),
     password: z.string().min(8, {
         message: "Password must have atleast 8 characters"
@@ -33,22 +38,29 @@ export default function LoginForm() {
             confirmPassword: ""
         }
     });
+    const {setToken} = useAuth();
 
     async function onSubmit(data: z.infer<typeof LoginFormSchema>){
-
         // Simulating Login
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        try {
+            const res: AxiosResponse<AuthResponse> = await axios.post(API_URL + "/api/v1/auth/register", data);
 
-        toast({
-            title: "Submitting",
-            description: (
-                <pre className="p-4">
-                    <code >
-                        {JSON.stringify(data, null, 2)}
-                    </code>
-                </pre>
-            )
-        })
+            setToken(res.data.token);
+
+            toast({
+                title: "Logged In",
+                description: (
+                    <p className="text-green-400">Successfully Logged In!</p>
+                )
+            })
+        } catch (err: any) {
+            toast({
+                title: "Failed to Log In",
+                description: (
+                    <p className="text-red-400">{err.message}</p>
+                )
+            });
+        }
     }
 
     return (
@@ -60,6 +72,32 @@ export default function LoginForm() {
             <CardContent className="space-y-2">
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-5 ">
+                        <FormField
+                            name="firstName"
+                            control={form.control}
+                            render = {({field}) => (
+                                <FormItem>
+                                    <FormLabel>First Name</FormLabel>
+                                    <FormControl>
+                                        <Input  placeholder="Enter your first name" {...field}/>
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            name="lastName"
+                            control={form.control}
+                            render = {({field}) => (
+                                <FormItem>
+                                    <FormLabel>Last Name</FormLabel>
+                                    <FormControl>
+                                        <Input  placeholder="Enter your last name" {...field}/>
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
                         <FormField
                             name="email"
                             control={form.control}
@@ -91,7 +129,7 @@ export default function LoginForm() {
                             control={form.control}
                             render = {({field}) => (
                                 <FormItem>
-                                    <FormLabel>Password</FormLabel>
+                                    <FormLabel>Confirm Password</FormLabel>
                                     <FormControl>
                                         <Input type="password" placeholder="Enter the password again" {...field}/>
                                     </FormControl>

@@ -4,10 +4,13 @@ import {
     useEffect,
     useMemo,
     useState,
-
     ReactNode,
     useContext
 } from "react";
+
+
+import { useAppDispatch } from "@/hooks";
+import { setUser, unSetUser } from "./authSlice";
 
 type ContextValueProp = {
     token: string|null,
@@ -21,19 +24,26 @@ const TOKENKEY = 'token';
 type Prop = {children: ReactNode};
 const AuthProvider = ({children}: Prop) => {
 
+
+    const dispatch = useAppDispatch();
+
     const [token, setTokenInner] = useState(localStorage.getItem(TOKENKEY));
 
     useEffect(() => {
         if (token) {
             axios.defaults.headers.common.Authorization = token;
-            localStorage.setItem('token', token);
+            localStorage.setItem(TOKENKEY, token);
+            // Parse the token
+
+            dispatch(setUser(token));
         } else {
             delete axios.defaults.headers.common.Authorization;
-            localStorage.removeItem('token');
+            localStorage.removeItem(TOKENKEY);
+            dispatch(unSetUser());
         }
     }, [token]);
 
-    const setToken = (newToken: string) => {
+    const setToken = (newToken: string|null) => {
         setTokenInner(newToken);
     };
     const contextValue = useMemo(() => ({

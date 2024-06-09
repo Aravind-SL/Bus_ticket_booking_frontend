@@ -8,9 +8,9 @@ function App() {
   return (
       <>
           <div className='w-screen min-h-screen bg-gray-100 ' >
-            <AuthProvider>
-                <Routes />
-            </AuthProvider>
+                <AuthProvider>
+                    <Routes />
+                </AuthProvider>
           </div>
           <Toaster />
       </>
