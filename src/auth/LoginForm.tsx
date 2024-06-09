@@ -7,15 +7,24 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from '@/components/ui/use-toast';
 import { Button } from '@/components/ui/button';
 import { ReloadIcon } from '@radix-ui/react-icons';
-
+import { API_URL } from '@/consts';
+import axios, {AxiosResponse} from 'axios';
+import { useAuth } from './AuthProvider';
 
 const LoginFormSchema = z.object({
     email: z.string().email(),
     password: z.string()
 })
 
+
+export interface AuthResponse {
+    token: string
+}
+
 /** Login form component */
 export default function LoginForm() {
+    const {setToken} = useAuth();
+
 
     const form = useForm<z.infer<typeof LoginFormSchema>>({
         resolver: zodResolver(LoginFormSchema),
@@ -28,18 +37,26 @@ export default function LoginForm() {
     async function onSubmit(data: z.infer<typeof LoginFormSchema>){
 
         // Simulating Login
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        try {
+            const res: AxiosResponse<AuthResponse> = await axios.post(API_URL + "/api/v1/auth/authenticate", data);
 
-        toast({
-            title: "Submitting",
-            description: (
-                <pre className="p-4">
-                    <code >
-                        {JSON.stringify(data, null, 2)}
-                    </code>
-                </pre>
-            )
-        })
+            setToken(res.data.token);
+
+            toast({
+                title: "Logged In",
+                description: (
+                    <p className="text-green-400">Successfully Logged In!</p>
+                )
+            })
+        } catch (err: any) {
+            toast({
+                title: "Failed to Log In",
+                description: (
+                    <p className="text-red-400">{err.message}</p>
+                )
+            });
+        }
+
     }
 
     return (

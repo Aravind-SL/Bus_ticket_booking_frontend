@@ -2,16 +2,10 @@ import {useRouteError} from 'react-router-dom';
 
 
 const ErrorPage = () => {
-    let error = useRouteError();
-    console.error(error);
+    let error: any = useRouteError();
     return (
         <div>
-            error
-            <pre>
-                <code>
-                    {JSON.stringify(error, null, 4)};
-                </code>
-            </pre>
+            {error.status} {error.statusText}
         </div>
     );
 };
