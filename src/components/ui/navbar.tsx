@@ -1,7 +1,6 @@
 import {
     Menubar,
     MenubarTrigger,
-    MenubarItem,
     MenubarMenu,
   } from '@/components/ui/menubar';
 import { Button } from '@/components/ui/button';
