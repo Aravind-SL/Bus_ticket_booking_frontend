@@ -7,8 +7,9 @@ import { Button } from '@/components/ui/button';
   
 export default function Navbar() {
     return (
-      <Menubar>
+      <Menubar className='h-200'>
         <MenubarMenu>
+            <MenubarTrigger>logo</MenubarTrigger>
             <MenubarTrigger>Home</MenubarTrigger>
             <MenubarTrigger>Browse</MenubarTrigger>
             <MenubarTrigger>Contact</MenubarTrigger>
