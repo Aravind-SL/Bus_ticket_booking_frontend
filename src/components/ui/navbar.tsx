@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
   
 export default function Navbar() {
     return (
-      <Menubar className='h-200'>
+      <Menubar className='h-250'>
         <MenubarMenu>
             <MenubarTrigger>logo</MenubarTrigger>
             <MenubarTrigger>Home</MenubarTrigger>
