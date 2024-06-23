@@ -3,6 +3,8 @@ import AuthPage from './auth/AuthPage';
 import ProtectedRoute from './auth/ProtectedRoute';
 import ErrorPage from './ErrorPage';
 import Logout from './auth/Logout';
+import UserPage, { loader as userLoader} from './user/UserPage';
+import UserHistory, {loader as userHistoryLoader} from './user/UserHistory';
 
 const Routes = () => {
 
@@ -30,6 +32,18 @@ const Routes = () => {
         {
             path:"/logout",
             element: <Logout />
+        },
+        {
+            path: "/user",
+            element: <UserPage />,
+            loader: userLoader,
+            children: [
+                {
+                    path: "history",
+                    loader: userHistoryLoader,
+                    element: <UserHistory />
+                },
+            ],
         }
     ];
 
@@ -38,6 +52,7 @@ const Routes = () => {
        {
            path: "/",
            element: <ProtectedRoute />,
+           errorElement: <ErrorPage />,
            children: protectedRoutes,
        }
     ]);

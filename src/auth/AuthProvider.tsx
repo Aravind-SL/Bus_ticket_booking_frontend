@@ -31,15 +31,19 @@ const AuthProvider = ({children}: Prop) => {
 
     useEffect(() => {
         if (token) {
-            axios.defaults.headers.common.Authorization = token;
-            localStorage.setItem(TOKENKEY, token);
             // Parse the token
+            let data = JSON.parse(atob(token.split('.')[1]));
+            if (data.exp * 1000 > Date.now()) {
 
-            dispatch(setUser(token));
+              axios.defaults.headers.common.Authorization = "Bearer " + token;
+              localStorage.setItem(TOKENKEY, token);
+            } else {
+              setTokenInner(null);
+            }
+
         } else {
             delete axios.defaults.headers.common.Authorization;
             localStorage.removeItem(TOKENKEY);
-            dispatch(unSetUser());
         }
     }, [token]);
 
