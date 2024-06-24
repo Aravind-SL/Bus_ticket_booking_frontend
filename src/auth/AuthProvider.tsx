@@ -8,38 +8,34 @@ import {
     useContext
 } from "react";
 
-
-import { useAppDispatch } from "@/hooks";
-import { setUser, unSetUser } from "./authSlice";
-
-type ContextValueProp = {
+type AuthContextValue = {
     token: string|null,
     setToken: (newToken:string) => void
 };
 
-const AuthContext = createContext<ContextValueProp>();
+const AuthContext = createContext<AuthContextValue>();
 
 const TOKENKEY = 'token';
 
 type Prop = {children: ReactNode};
 const AuthProvider = ({children}: Prop) => {
-
-
-    const dispatch = useAppDispatch();
-
     const [token, setTokenInner] = useState(localStorage.getItem(TOKENKEY));
 
     useEffect(() => {
         if (token) {
-            axios.defaults.headers.common.Authorization = token;
-            localStorage.setItem(TOKENKEY, token);
             // Parse the token
+            let data = JSON.parse(atob(token.split('.')[1]));
+            if (data.exp * 1000 > Date.now()) {
 
-            dispatch(setUser(token));
+              axios.defaults.headers.common.Authorization = "Bearer " + token;
+              localStorage.setItem(TOKENKEY, token);
+            } else {
+              setTokenInner(null);
+            }
+
         } else {
             delete axios.defaults.headers.common.Authorization;
             localStorage.removeItem(TOKENKEY);
-            dispatch(unSetUser());
         }
     }, [token]);
 
