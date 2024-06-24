@@ -3,7 +3,10 @@ import { Outlet, useLoaderData } from "react-router-dom";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import axios from "axios";
 import {useEffect} from "react";
+<<<<<<< HEAD
 import {useAuth} from "@/auth/AuthProvider";
+=======
+>>>>>>> 2c0230d (files are updated)
 
 
 type Loader = (prop: any) => Promise<any>;
@@ -17,6 +20,7 @@ export const loader: Loader = async ({ request }) => {
 */
 const UserPage = () => {
   const [username, setUsername] = useState('');
+<<<<<<< HEAD
   const {token} = useAuth();
 
   useEffect(() => {
@@ -30,6 +34,14 @@ const UserPage = () => {
       
 
    axios.get("http://localhost:8080/api/v1/users/me");
+=======
+
+  useEffect(() => {
+    axios.get("http://localhost:8080/api/v1/users/me")
+      .then((d) => {
+        setUsername(d.data.username);
+      });
+>>>>>>> 2c0230d (files are updated)
   }, []);
 
   return (
