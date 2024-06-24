@@ -8,25 +8,17 @@ import {
     useContext
 } from "react";
 
-
-import { useAppDispatch } from "@/hooks";
-import { setUser, unSetUser } from "./authSlice";
-
-type ContextValueProp = {
+type AuthContextValue = {
     token: string|null,
     setToken: (newToken:string) => void
 };
 
-const AuthContext = createContext<ContextValueProp>();
+const AuthContext = createContext<AuthContextValue>();
 
 const TOKENKEY = 'token';
 
 type Prop = {children: ReactNode};
 const AuthProvider = ({children}: Prop) => {
-
-
-    const dispatch = useAppDispatch();
-
     const [token, setTokenInner] = useState(localStorage.getItem(TOKENKEY));
 
     useEffect(() => {
