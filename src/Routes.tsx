@@ -3,7 +3,6 @@ import AuthPage from './auth/AuthPage';
 import ProtectedRoute from './auth/ProtectedRoute';
 import ErrorPage from './ErrorPage';
 import Logout from './auth/Logout';
-<<<<<<< HEAD
 import UserPage, {loader as userLoader} from './user/UserPage';
 import UserHistory, {loader as userHistoryLoader} from './user/UserHistory';
 import Browse from './home/Browse';
@@ -12,11 +11,6 @@ import AdminPage, {BusDetailPage, BusPage, RoutesDetailPage, StationDetailPage, 
 
 import { StationPage, RoutePage } from './admin';
 import {BookRide} from './booking/BookRide';
-=======
-import UserPage, { loader as userLoader} from './user/UserPage';
-import UserHistory, {loader as userHistoryLoader} from './user/UserHistory';
->>>>>>> 2c0230d (files are updated)
-
 const Routes = () => {
 
   const notProtectedRoutes = [
@@ -69,7 +63,6 @@ const Routes = () => {
           element: <StationDetailPage />
         },
         {
-<<<<<<< HEAD
           path: "routes",
           element: <RoutePage />
         },
@@ -105,34 +98,6 @@ const Routes = () => {
       ],
     }
   ];
-=======
-            path:"/logout",
-            element: <Logout />
-        },
-        {
-            path: "/user",
-            element: <UserPage />,
-            loader: userLoader,
-            children: [
-                {
-                    path: "history",
-                    loader: userHistoryLoader,
-                    element: <UserHistory />
-                },
-            ],
-        }
-    ];
-
-    const router = createBrowserRouter([
-       ...notProtectedRoutes,
-       {
-           path: "/",
-           element: <ProtectedRoute />,
-           errorElement: <ErrorPage />,
-           children: protectedRoutes,
-       }
-    ]);
->>>>>>> 2c0230d (files are updated)
 
   const router = createBrowserRouter([
     ...notProtectedRoutes,

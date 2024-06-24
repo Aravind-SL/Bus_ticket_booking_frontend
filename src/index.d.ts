@@ -1,4 +1,5 @@
 type EntityID = string | number;
+
 type Station = {
   stationName: string,
   stationId: number,
