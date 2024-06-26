@@ -3,6 +3,7 @@ import { Outlet, useLoaderData } from "react-router-dom";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import axios from "axios";
 import {useEffect} from "react";
+import {useAuth} from "@/auth/AuthProvider";
 
 
 type Loader = (prop: any) => Promise<any>;
@@ -16,12 +17,19 @@ export const loader: Loader = async ({ request }) => {
 */
 const UserPage = () => {
   const [username, setUsername] = useState('');
+  const {token} = useAuth();
 
   useEffect(() => {
-    axios.get("http://localhost:8080/api/v1/users/me")
-      .then((d) => {
-        setUsername(d.data.username);
-      });
+
+    fetch("http://localhost:8080/api/v1/users/me", {
+      headers: {
+        Authorization: "Bearer " + token
+      }
+    });
+
+      
+
+   axios.get("http://localhost:8080/api/v1/users/me");
   }, []);
 
   return (

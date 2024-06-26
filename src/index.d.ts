@@ -8,6 +8,8 @@ type Station = {
 type Bus = {
   busNumber: number,
   busId: number,
+  departureTime: Date,
+  arrivalTime: Date
 };
 
 type Route = {
@@ -17,3 +19,6 @@ type Route = {
  distance: number
 }
 
+type User = {
+  username: string,
+}

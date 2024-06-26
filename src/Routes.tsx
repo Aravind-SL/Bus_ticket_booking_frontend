@@ -7,6 +7,10 @@ import UserPage, {loader as userLoader} from './user/UserPage';
 import UserHistory, {loader as userHistoryLoader} from './user/UserHistory';
 import Browse from './home/Browse';
 import Booking from './booking/Booking'
+import AdminPage from './admin';
+
+import { StationPage, RoutePage } from './admin';
+
 const Routes = () => {
 
   const notProtectedRoutes = [
@@ -41,6 +45,21 @@ const Routes = () => {
     {
       path: "/logout",
       element: <Logout />
+    },
+    {
+      path: "/admin",
+      element: <AdminPage />,
+      children: [
+        {
+          path: "stations",
+          element: <StationPage />
+        },
+        {
+          path: "routes",
+          element: <RoutePage />
+        },
+
+      ]
     },
     {
       path: "/user",
