@@ -46,7 +46,7 @@ function SelectBoxSearch<T>({items, icon = <></>, id, searchPlaceHolder, getValu
                 items.map((e) => (
                   <CommandItem
                     key={id(e)}
-                    value={id(e)}
+                    value={valueTransform(e).toLowerCase()}
                     onSelect={(val) => {
                       setValue(val === id(e) ? e : null);
                       setOpen(false);

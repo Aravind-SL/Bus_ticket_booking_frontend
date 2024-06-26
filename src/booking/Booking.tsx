@@ -1,13 +1,23 @@
 import * as Card from '@/components/ui/card';
-import {useFetch} from '@/utils/hooks';
 import {useEffect, useState} from 'react';
 import SelectBoxSearch from '@/components/SelectBoxSearch';
 import BusRouteList from './BusRouteList';
 import {MapPin} from 'lucide-react';
+import {useStations} from '@/stores';
 
 const Booking = () => {
 
-  const {isLoading, data: stations} = useFetch<Station[]>('api/v1/stations');
+  const [isLoading, setLoading] = useState(false);
+  const stations =  useStations((state) => state.items);
+  const fetchNow = useStations((state) => state.fetchAll);
+
+  useEffect(() => {
+    if (!stations){
+      setLoading(true)
+      fetchNow().finally(() => setLoading(false));
+    }
+  },  []);
+
   const [startList, setStartList] = useState<Station[]>([]);
   const [destinationList, setDestinationList] = useState<Station[]>([]);
   const [start, setStart] = useState<Station>();

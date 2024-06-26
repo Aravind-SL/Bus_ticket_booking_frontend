@@ -1,4 +1,4 @@
-import { create } from 'zustand';
+import { UseBoundStore, StoreApi, create } from 'zustand';
 import axios from 'axios';
 import {API_URL} from './consts';
 
@@ -44,3 +44,5 @@ function createDefaultStores<T>(path: string) {
 
 export const useStations = createDefaultStores<Station>("/api/v1/stations");
 export const useRoutes = createDefaultStores<Route>("/api/v1/routes");
+
+export type Store<T> = UseBoundStore<StoreApi<EntityState<T>>>

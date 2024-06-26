@@ -4,11 +4,12 @@ import {ReactNode} from 'react';
 
 interface FormDialogProps {
   icon: ReactNode,
+  formTitle: string,
   onClose?: (close: boolean) => void,
   children: ReactNode
 }
 
-export default ({icon, children, onClose = () => {}}: FormDialogProps) => {
+export default ({icon, formTitle, children, onClose = () => {}}: FormDialogProps) => {
 
   return (
     <Dialog onOpenChange={(open) => onClose(!open)}>
@@ -23,7 +24,7 @@ export default ({icon, children, onClose = () => {}}: FormDialogProps) => {
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>
-            Add Station
+            {formTitle}
           </DialogTitle>
         </DialogHeader>
         {children}
