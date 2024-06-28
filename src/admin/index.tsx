@@ -4,8 +4,15 @@ import {HamburgerMenuIcon} from "@radix-ui/react-icons";
 import {Link, Outlet} from "react-router-dom";
 import {useFetch} from "@/utils/hooks";
 
-export {StationPage} from './Stations.tsx';
-export {RoutePage} from './RoutePage.tsx';
+export {StationPage} from './Stations';
+export {RoutePage} from './RoutePage';
+export {BusPage} from './BusPage';
+export {UsersPage} from './Users';
+
+export {StationDetailPage} from './StationDetail';
+export {RoutesDetailPage} from './RoutesDetail';
+export {BusDetailPage} from './BusDetailPage';
+
 
 
 const AdminPage = () => {
@@ -46,6 +53,10 @@ const AdminNav = () => {
     {
       label: "Buses",
       to: "buses",
+    },
+    {
+      label: "Users",
+      to: "users"
     },
     {
       label: "Bookings",

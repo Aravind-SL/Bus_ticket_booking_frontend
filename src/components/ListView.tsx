@@ -1,3 +1,4 @@
+import {ReactNode} from 'react';
 import {Link} from 'react-router-dom';
 
 
@@ -6,7 +7,7 @@ interface ListViewProp<T> {
   description?: string,
   items: T[],
   id: (d: T) => string | number
-  label: (d: T) => string
+  label: (d: T) => string | ReactNode
 }
 export function  ListView<T>({heading, id, items, label, description}: ListViewProp<T>) {
 
@@ -14,10 +15,17 @@ export function  ListView<T>({heading, id, items, label, description}: ListViewP
     <>
       <h3 className="text-2xl font-semibold">{heading}</h3>
       {description ?? <p className="text-muted">{description}</p>}
-      <ul>
+      <ul className='flex flex-col w-full mt-6 space-y-2'>
         {
           items.map(e => (
-            <li key={id(e)}><Link to={id(e).toString()}>{label(e)}</Link></li>
+            <li key={id(e)}>
+              <Link to={id(e).toString()} >
+                <div className='w-full px-4 py-3 rounded hover:bg-gray-200 transition transition-color bg-background '>
+                  {label(e)}
+                </div>
+
+              </Link>
+            </li>
           ))
         }
       </ul>

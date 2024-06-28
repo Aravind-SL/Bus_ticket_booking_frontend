@@ -21,6 +21,7 @@ interface StationFormProps {
 export default ({station}: StationFormProps) => {
 
   const addStation = useStations(state => state.add);
+  const editStation = useStations(state => state.edit);
   const form = useForm<z.infer<typeof StationFormSchema>>({
       resolver: zodResolver(StationFormSchema),
       defaultValues: {
@@ -31,17 +32,24 @@ export default ({station}: StationFormProps) => {
 
   const onSubmit = async (data: z.infer<typeof StationFormSchema>) => {
     try {
-      await addStation(data);
-      toast({
-        title: "Added Station " + data.stationName,
-        description: (
-          <p>The station {data.stationName} is added Successfully </p>
-        )
-      });
+      if (!station) {
+        await addStation(data);
+        toast({
+          title: "Added Station " + data.stationName,
+          description: (
+            <p>The station {data.stationName} is added Successfully </p>
+          )
+        });
+      } else {
+        await editStation({stationId: station.stationId, ...data});
+        toast({
+          title: "Changes Saved Station " + data.stationName,
+        });
+      }
 
     } catch (e) {
       toast({
-        title: "Failed to add Station " + data.stationName,
+        title: "Failed to process" + data.stationName,
         description: (
           <p>{e.data ? e.data : e.message}</p>
         )
@@ -53,6 +61,7 @@ export default ({station}: StationFormProps) => {
         
 
   return (
+      <DialogClose asChild>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className='w-full space-y-5'>
             <FormField 
@@ -81,15 +90,14 @@ export default ({station}: StationFormProps) => {
                 </FormItem>
               )}
             />
-            <DialogClose asChild>
               <Button type="submit" disabled={form.formState.isSubmitting} className="w-full mt-5">
 
                 {form.formState.isSubmitting && (<ReloadIcon className="w-4 h-4 mr-2 animate-spin"/>)}
                 <span>{station ? "Edit" : "Add"}</span> 
               </Button>
-          </DialogClose>
           </form>
         </Form>
+      </DialogClose>
   );
 
 }

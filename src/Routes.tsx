@@ -7,9 +7,10 @@ import UserPage, {loader as userLoader} from './user/UserPage';
 import UserHistory, {loader as userHistoryLoader} from './user/UserHistory';
 import Browse from './home/Browse';
 import Booking from './booking/Booking'
-import AdminPage from './admin';
+import AdminPage, {BusDetailPage, BusPage, RoutesDetailPage, StationDetailPage, UsersPage} from './admin';
 
 import { StationPage, RoutePage } from './admin';
+import {BookRide} from './booking/BookRide';
 
 const Routes = () => {
 
@@ -21,7 +22,11 @@ const Routes = () => {
     },
     {
       path: "book",
-      element: <Booking />
+      element: <Booking />,
+    },
+    {
+      path: "book/ride",
+      element: <BookRide />
     },
     {
       path: "browse",
@@ -55,8 +60,28 @@ const Routes = () => {
           element: <StationPage />
         },
         {
+          path: "stations/:id",
+          element: <StationDetailPage />
+        },
+        {
           path: "routes",
           element: <RoutePage />
+        },
+        {
+          path: "routes/:id",
+          element: <RoutesDetailPage />
+        },
+        {
+          path: "buses",
+          element: <BusPage />
+        },
+        {
+          path: "buses/:id",
+          element: <BusDetailPage />
+        },
+        {
+          path: "users",
+          element: <UsersPage />
         },
 
       ]

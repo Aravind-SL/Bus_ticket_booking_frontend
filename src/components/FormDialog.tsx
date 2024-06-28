@@ -27,7 +27,9 @@ export default ({icon, formTitle, children, onClose = () => {}}: FormDialogProps
             {formTitle}
           </DialogTitle>
         </DialogHeader>
-        {children}
+        <div className='relative'>
+          {children}
+        </div>
       </DialogContent>
     </Dialog>
   );};
