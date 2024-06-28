@@ -6,13 +6,14 @@ import Logout from './auth/Logout';
 import UserPage, {loader as userLoader} from './user/UserPage';
 import UserHistory, {loader as userHistoryLoader} from './user/UserHistory';
 import Browse from './home/Browse';
+import HomePage from './HomePage';
 import Booking from './booking/Booking'
 const Routes = () => {
 
   const notProtectedRoutes = [
     {
       path: "/",
-      element: <div>Home</div>,
+      element: <HomePage />,
       errorElement: <ErrorPage />
     },
     {
