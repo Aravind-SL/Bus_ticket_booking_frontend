@@ -7,11 +7,11 @@ export function Footer(): ReactElement {
             <div className="w-full pl-16 pr-28 mx-0">
                 <div className="w-full flex-row  items-center sm:flex sm:items-center sm:justify-between">
                     <a href="/home" className="flex items-center max-sm:items-center rtl:space-x-reverse">
-                        <img className='w-36 m-0 max-md:w-14 py-4 max-sm:px-2 max-sm:w-8/12' src="src\assets\Bus_Logo.png" alt="NexTrip logo" />
+                        <img className='w-36 m-0 max-lg:w-16 py-4 max-sm:px-2 max-sm:w-8/12' src="src\assets\Bus_Logo.png" alt="NexTrip logo" />
                         <span className="self-center max-sm:justify-center text-4xl font-bold whitespace-nowrap max-sm:text-2xl sm:text-2xl dark:text-white">NexTrip</span>
                     </a>
                 
-                <ul className="flex justify-center gap-10 text-base font-medium text-gray-900 sm:mb-0 max-sm:text-sm items-center max-md:gap-5 dark:text-gray-400">
+                <ul className="flex justify-center items-center gap-10 text-base font-medium text-gray-900 sm:mb-0 max-sm:text-sm max-md:gap-5  dark:text-gray-400">
                     <li>
                         <a href="#" className="hover:text-violet-900 me-4 md:me-6">About</a>
                     </li>
