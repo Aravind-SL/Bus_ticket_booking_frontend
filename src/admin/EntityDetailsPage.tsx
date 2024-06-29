@@ -65,7 +65,6 @@ export function EntityDetailPage<T>({id, getId, heading , useData, details, form
         {form &&
           <Dialog>
             <DialogTrigger asChild>
-
               <Button variant={'outline'} >Edit</Button>
             </DialogTrigger>
             <DialogContent>
@@ -88,10 +87,10 @@ export function EntityDetailPage<T>({id, getId, heading , useData, details, form
               </DialogHeader>
 
               <DialogFooter className="flex justify-center">
-                <DialogClose>
+                <DialogClose asChild>
                   <Button variant={'destructive'} onClick={handleDelete}>Delete</Button>
                 </DialogClose>
-                <DialogClose>
+                <DialogClose asChild>
                   <Button variant={'secondary'}>Cancel</Button>
                 </DialogClose>
               </DialogFooter>

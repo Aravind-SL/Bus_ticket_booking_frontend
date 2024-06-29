@@ -47,6 +47,8 @@ export default ({bus}: BusFormProps) => {
         ...bus,
         routeId: bus.route.routeId,
         totalSeats: bus.seats.length,
+        arrivalTime: bus.arrivalTime.split(":").slice(0, 2).join(":"),
+        departureTime: bus.departureTime.split(":").slice(0, 2).join(":"),
       } : {}
   });
 

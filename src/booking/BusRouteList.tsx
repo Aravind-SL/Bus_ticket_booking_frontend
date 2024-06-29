@@ -1,5 +1,7 @@
+import { Link } from 'react-router-dom';
 import {useState, useEffect} from 'react';
 import {useBuses} from '@/stores';
+import { displayTime } from '@/utils';
 
 interface BusesFroRouteProps {
   start?: Station,
@@ -11,30 +13,23 @@ const BusRouteList = ({start, destination}: BusesFroRouteProps) => {
   const [filteredBus, setFilteredBus] = useState(buses);
 
   useEffect(() => {
-
-    console.log(start);
-    console.log(filteredBus);
     if (start !== undefined || destination !== undefined)
       setFilteredBus(buses.filter(b => b.route.fromStation.stationId === start?.stationId || b.route.toStation.stationId === destination?.stationId ));
-
   }, [start, destination]);
 
 
   return  (
-    <ul className='flex flex-col items-center w-full mt-2'>
+    <ul className='flex flex-col items-center w-full mt-2 space-y-3'>
       {filteredBus.length > 0 ? filteredBus.map(b => 
-        <li key={b.busId} className='flex w-full py-3 rounded transition hover:bg-gray-200 bg-background justify-evenly'>
-          <span>{b.busNumber}</span>
-          <span>{b.route.fromStation.stationName} - {b.route.toStation.stationName}</span>
-          <span>{displayTime(b.departureTime)} - {displayTime(b.arrivalTime)}</span> 
-        </li>) : <p>No Ride were found</p>}
+        <Link to={b.busId.toString()} className='w-full'>
+          <li key={b.busId} className='flex w-full px-4 py-3 rounded transition hover:bg-gray-200 bg-background '>
+            <span className='w-1/3'>{b.busNumber}</span>
+            <span className='w-1/3 text-center'>{b.route.fromStation.stationName} - {b.route.toStation.stationName}</span>
+            <span className='w-1/3 text-right'>{displayTime(b.departureTime)} - {displayTime(b.arrivalTime)}</span> 
+          </li>
+        </Link>) : <p>No Ride were found</p>}
     </ul>
   ) 
-}
-
-function displayTime(val:string ) {
-  const [hrs, min] = val.split(':');
-  return `${parseInt(hrs) % 12}:${min} ${parseInt(hrs) > 12 ? 'PM' : 'AM'}`
 }
 
 

@@ -25,10 +25,6 @@ const Routes = () => {
       element: <Booking />,
     },
     {
-      path: "book/ride",
-      element: <BookRide />
-    },
-    {
       path: "browse",
       element: <Browse />
     },
@@ -42,6 +38,10 @@ const Routes = () => {
     {
       path: "/home",
       element: <div>Protected Home</div>
+    },
+    {
+      path: "book/:id",
+      element: <BookRide />
     },
     {
       path: "/protected",

@@ -7,17 +7,7 @@ import {useStations} from '@/stores';
 
 const Booking = () => {
 
-  const [isLoading, setLoading] = useState(false);
   const stations =  useStations((state) => state.items);
-  const fetchNow = useStations((state) => state.fetchAll);
-
-  useEffect(() => {
-    if (!stations){
-      setLoading(true)
-      fetchNow().finally(() => setLoading(false));
-    }
-  },  []);
-
   const [startList, setStartList] = useState<Station[]>([]);
   const [destinationList, setDestinationList] = useState<Station[]>([]);
   const [start, setStart] = useState<Station>();
@@ -25,8 +15,6 @@ const Booking = () => {
 
 
   useEffect(() => {
-    
-
     if (start && stations) 
       setDestinationList(stations.filter((s) => s !== start));
     else if (stations)
@@ -36,7 +24,6 @@ const Booking = () => {
       setStartList(stations.filter((s) => s !== destination));
     else if (stations)
       setStartList(stations);
-
   }, [start, destination, stations]);
 
   return (
@@ -48,7 +35,6 @@ const Booking = () => {
           </Card.CardTitle>
         </Card.CardHeader>
         <Card.CardContent className='flex items-center justify-around gap-4'>
-          {isLoading && <p>Loading...</p>}
           {stations &&
             <>
               <SelectBoxSearch<Station>
