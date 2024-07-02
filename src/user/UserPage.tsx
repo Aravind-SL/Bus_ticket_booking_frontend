@@ -1,11 +1,12 @@
 import { Outlet } from "react-router-dom";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
+import {useAuth} from "@/auth/AuthProvider";
+
 /**
 * A page for viewing and managing authenticated information.
 */
 const UserPage = () => {
-
 
   return (
     <div className="container w-full py-8">

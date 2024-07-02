@@ -14,6 +14,7 @@ import {BookRide} from './booking/BookRide';
 import AuthProvider from './auth/AuthProvider';
 import NavBar from './components/ui/navbar';
 import { Footer } from './components/ui/footer';
+
 const Routes = () => {
 
   const notProtectedRoutes = [

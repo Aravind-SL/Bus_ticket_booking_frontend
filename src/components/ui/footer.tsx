@@ -32,6 +32,7 @@ export function Footer(): ReactElement {
 
             <hr className="mx-12 my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-4" />
             <span className="block text-sm text-gray-600 sm:text-center dark:text-gray-400">© 2024 <a href="/home" className="hover:underline">BusKaro™</a>. All Rights Reserved.</span>
+
             <div className="flex justify-center mt-5 space-x-4">
                 <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200">
                     <span className="sr-only">Facebook</span>
