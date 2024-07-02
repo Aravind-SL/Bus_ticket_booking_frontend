@@ -41,7 +41,6 @@ export default function LoginForm() {
     const {setToken} = useAuth();
 
     async function onSubmit(data: z.infer<typeof LoginFormSchema>){
-        // Simulating Login
         try {
             const res: AxiosResponse<AuthResponse> = await axios.post(API_URL + "/api/v1/auth/register", data);
 
@@ -57,7 +56,7 @@ export default function LoginForm() {
             toast({
                 title: "Failed to Log In",
                 description: (
-                    <p className="text-red-400">{err.message}</p>
+                    <p className="text-red-400">{err.data}</p>
                 )
             });
         }
@@ -118,7 +117,7 @@ export default function LoginForm() {
                                 <FormItem>
                                     <FormLabel>Password</FormLabel>
                                     <FormControl>
-                                        <Input type="password" placeholder="Password" {...field}/>
+              <Input type="password" placeholder="Password" {...field}/>
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -138,7 +137,7 @@ export default function LoginForm() {
                             )}
                         />
                         <Button type="submit" disabled={form.formState.isSubmitting} className="w-full">
-                            {form.formState.isSubmitting && (<ReloadIcon className="mr-2 h-4 w-4 animate-spin"/>)}
+                            {form.formState.isSubmitting && (<ReloadIcon className="w-4 h-4 mr-2 animate-spin"/>)}
                             Sign Up
                         </Button>
                     </form>

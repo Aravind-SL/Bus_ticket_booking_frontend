@@ -7,6 +7,10 @@ import UserPage, {loader as userLoader} from './user/UserPage';
 import UserHistory, {loader as userHistoryLoader} from './user/UserHistory';
 import Browse from './home/Browse';
 import Booking from './booking/Booking'
+import AdminPage, {AdminHome, BookingDetailPage, BookingPage, BusDetailPage, BusPage, RoutesDetailPage, StationDetailPage, UsersPage} from './admin';
+
+import { StationPage, RoutePage } from './admin';
+import {BookRide} from './booking/BookRide';
 const Routes = () => {
 
   const notProtectedRoutes = [
@@ -17,7 +21,7 @@ const Routes = () => {
     },
     {
       path: "book",
-      element: <Booking />
+      element: <Booking />,
     },
     {
       path: "browse",
@@ -35,12 +39,58 @@ const Routes = () => {
       element: <div>Protected Home</div>
     },
     {
+      path: "book/:id",
+      element: <BookRide />
+    },
+    {
       path: "/protected",
       element: <div>Protected Route</div>
     },
     {
       path: "/logout",
       element: <Logout />
+    },
+    {
+      path: "/admin",
+      element: <AdminPage />,
+      children: [
+        {
+          path: "",
+          element: <AdminHome />
+        },
+        {
+          path: "stations",
+          element: <StationPage />
+        },
+        {
+          path: "stations/:id",
+          element: <StationDetailPage />
+        },
+        {
+          path: "routes",
+          element: <RoutePage />
+        },
+        {
+          path: "bookings",
+          element: <BookingPage />
+        },
+        {
+          path: "bookings/:id",
+          element: <BookingDetailPage />
+        },
+        {
+          path: "routes/:id",
+          element: <RoutesDetailPage />
+        },
+        {
+          path: "buses",
+          element: <BusPage />
+        },
+        {
+          path: "buses/:id",
+          element: <BusDetailPage />
+        },
+      ]
     },
     {
       path: "/user",
