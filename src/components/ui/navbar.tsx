@@ -1,36 +1,33 @@
-import {
-    Menubar,
-    MenubarTrigger,
-    MenubarMenu,
-  } from '@/components/ui/menubar';
 import { Button } from '@/components/ui/button';
-import { useState } from 'react'; 
-
+import {useAuth} from '@/auth/AuthProvider';
+import {Link} from 'react-router-dom';
 
   
 export default function NavBar() {
-  const [Logged] = useState(false);
+
+  const {token} = useAuth();
+
   return(
-      <Menubar className='w-full h-fit flex items-center font-medium '>
-        <MenubarMenu>
-            <MenubarTrigger className='flex-auto md:flex-auto' ><div className="sm:flex-auto sm:items-start sm:justify-between">
-              <a href="/home" className="flex items-start mb-2 sm:mb-0 space-x-3 rtl:space-x-reverse">
-                  <img className='w-14 h-14 md:w-12 mb-2 ' src="https://img.freepik.com/premium-vector/logo-bus-icon-school-bus-vector-isolated-transport-bus-silhouette-design-black-bus_653669-3055.jpg " alt="BusKaro logo" />
-                  <span className="self-center text-2xl font-bold whitespace-nowrap dark:text-white">BusKaro</span>
-              </a>
+      <header className='container flex items-center w-full font-medium h-fit '>
+            <div className="sm:flex-auto sm:items-start sm:justify-between">
+              <Link to="/home" className="flex items-start mb-2 sm:mb-0 space-x-3 rtl:space-x-reverse">
+                  <img className='mb-2 w-14 h-14 md:w-12 ' src="https://img.freepik.com/premium-vector/logo-bus-icon-school-bus-vector-isolated-transport-bus-silhouette-design-black-bus_653669-3055.jpg " alt="App logo" />
+                  <span className="self-center text-2xl font-bold whitespace-nowrap dark:text-white">Busy Ah!</span>
+              </Link>
             </div>
-            </MenubarTrigger> 
             
-            <MenubarTrigger>Home</MenubarTrigger>
-            <MenubarTrigger>Browse</MenubarTrigger>
-            <MenubarTrigger>Contact</MenubarTrigger>
-            {
-              Logged && <MenubarTrigger>Profile</MenubarTrigger>
+            <nav className='flex items-center w-1/3 text-sm justify-evenly' >
+              {token && <Link to="/home" >Home</Link> }
+              <Link to="/book">Book a Ride</Link>
+              <Link to="#">Contact Us</Link>
+            </nav>
+            <Button asChild >
+              {token ? <Link to="/logout">Logout</Link>
+                : <Link to="/auth">Login</Link> }
+            </Button>
+
             
-            }
-            <MenubarTrigger><Button>Log In / Sign Up</Button></MenubarTrigger>
-        </MenubarMenu>
-      </Menubar>
+      </header>
   );
 }
 

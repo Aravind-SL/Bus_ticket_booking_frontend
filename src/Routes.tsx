@@ -1,9 +1,9 @@
-import {RouterProvider, createBrowserRouter} from 'react-router-dom';
+import {Outlet, RouterProvider, createBrowserRouter} from 'react-router-dom';
 import AuthPage from './auth/AuthPage';
 import ProtectedRoute from './auth/ProtectedRoute';
 import ErrorPage from './ErrorPage';
 import Logout from './auth/Logout';
-import UserPage, {loader as userLoader} from './user/UserPage';
+import UserPage from './user/UserPage';
 import UserHistory, {loader as userHistoryLoader} from './user/UserHistory';
 import Browse from './home/Browse';
 import Booking from './booking/Booking'
@@ -11,6 +11,9 @@ import AdminPage, {AdminHome, BookingDetailPage, BookingPage, BusDetailPage, Bus
 
 import { StationPage, RoutePage } from './admin';
 import {BookRide} from './booking/BookRide';
+import AuthProvider from './auth/AuthProvider';
+import NavBar from './components/ui/navbar';
+import { Footer } from './components/ui/footer';
 const Routes = () => {
 
   const notProtectedRoutes = [
@@ -95,7 +98,6 @@ const Routes = () => {
     {
       path: "/user",
       element: <UserPage />,
-      loader: userLoader,
       children: [
         {
           path: "history",
@@ -107,13 +109,27 @@ const Routes = () => {
   ];
 
   const router = createBrowserRouter([
-    ...notProtectedRoutes,
     {
-      path: "/",
-      element: <ProtectedRoute />,
-      errorElement: <ErrorPage />,
-      children: protectedRoutes,
-    }
+      path: "",
+      element: <>
+        <AuthProvider>
+            <NavBar />
+              <div className='w-screen min-h-screen bg-gray-100 '>
+                <Outlet />
+              </div>
+            <Footer />
+        </AuthProvider>
+      </>,
+      children: [
+        ...notProtectedRoutes,
+        {
+          path: "/",
+          element: <ProtectedRoute />,
+          errorElement: <ErrorPage />,
+          children: protectedRoutes,
+        }
+      ]
+    },
   ]);
 
   return <RouterProvider router={router} />;
