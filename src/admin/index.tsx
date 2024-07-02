@@ -2,67 +2,51 @@ import { Button } from "@/components/ui/button";
 import {Sheet, SheetClose, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger} from "@/components/ui/sheet";
 import {HamburgerMenuIcon} from "@radix-ui/react-icons";
 import {Link, Outlet} from "react-router-dom";
-import {useFetch} from "@/utils/hooks";
 
 export {StationPage} from './Stations';
 export {RoutePage} from './RoutePage';
 export {BusPage} from './BusPage';
 export {UsersPage} from './Users';
+export {BookingPage} from './BookingPage';
 
 export {StationDetailPage} from './StationDetail';
 export {RoutesDetailPage} from './RoutesDetail';
 export {BusDetailPage} from './BusDetailPage';
-
+export {AdminHome} from './AdminHome';
+export {BookingDetailPage} from './BookingDetail';
 
 
 const AdminPage = () => {
   // Check for admin role.
-
-  const {isLoading, data:user, error } = useFetch<User>("api/v1/users/me");
-
-
   return (
     <main className="h-screen p-4">
-
       <AdminNav />
-
-      {
-        isLoading ? <p>Loading</p> : 
-          error ? <span>{error.message}</span> : 
-        <h1>Hello {user?.username} </h1>
-      }
-
-
       <Outlet />
     </main>
   )
 
 }
 
+export  const links = [
+  {
+    label: "Stations",
+    to: "stations",
+  },
+  {
+    label: "Routes",
+    to: "routes",
+  },
+  {
+    label: "Buses",
+    to: "buses",
+  },
+  {
+    label: "Bookings",
+    to: "bookings",
+  },
+]
 const AdminNav = () => {
 
-  const links = [
-    {
-      label: "Stations",
-      to: "stations",
-    },
-    {
-      label: "Routes",
-      to: "routes",
-    },
-    {
-      label: "Buses",
-      to: "buses",
-    },
-    {
-      label: "Users",
-      to: "users"
-    },
-    {
-      label: "Bookings",
-      to: "bookings",
-    },
-  ]
 
   return (
     <Sheet> 
@@ -87,10 +71,6 @@ const AdminNav = () => {
          ))}
         </nav>
 
-
-       <SheetFooter className="flex flex-row items-end py-16 grow">
-              <Link to="settings" >Settings</Link>
-       </SheetFooter> 
 
       </SheetContent>
 

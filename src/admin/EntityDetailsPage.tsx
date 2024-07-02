@@ -15,11 +15,12 @@ interface EntityDetailPageProps<T> {
   id: EntityID,
   getId: (d: T) => EntityID
   details: (entity: T) =>  ReactNode,
-  deletable: boolean
-  form?: (d: T) => ReactNode
+  deletable: boolean,
+  form?: (d: T) => ReactNode,
+  action?: (d: T) => ReactNode
 }
 
-export function EntityDetailPage<T>({id, getId, heading , useData, details, form , deletable = false}: EntityDetailPageProps<T>){
+export function EntityDetailPage<T>({id, getId, action, heading , useData, details, form , deletable = false}: EntityDetailPageProps<T>){
 
   const items = useData((state) => state.items);
   const del = useData(state => state.delete);
@@ -62,6 +63,7 @@ export function EntityDetailPage<T>({id, getId, heading , useData, details, form
         </CardContent>
 
       <CardFooter className="flex space-x-4">
+        {action && action(entity)}
         {form &&
           <Dialog>
             <DialogTrigger asChild>

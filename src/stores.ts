@@ -115,6 +115,7 @@ export const useStations = await createEditableStore<Station>("/api/v1/stations"
 export const useRoutes = await createEditableStore<Route>("/api/v1/routes", r => r.routeId);
 export const useBuses = await createEditableStore<Bus>("/api/v1/buses", b => b.busId);
 export const useUsers = await createDeleteableStore<User>("/api/v1/users");
+export const useBookings = await createDefaultStores<Booking>("/api/v1/bookings");
 
 type State<T> = EntityState<T> | EditableEntityState<T> | DeletableEntityState<T>
 export type Store<T> = UseBoundStore<StoreApi<State<T>>>

@@ -1,12 +1,12 @@
 import EntityPage from "./EntityPage";
-import { useUsers } from "@/stores";
+import { useBookings } from "@/stores";
 export const UsersPage  = () => {
   return (
     <EntityPage 
-      pageTitle="Buses"
-      useData={useUsers}
-      id={(u) => u.username}
-      label={(u) => u.username}
+      pageTitle="Bookings"
+      useData={useBookings}
+      id={(b) => b.id}
+      label={(u) => u.id}
     />
   );
 }

@@ -8,7 +8,8 @@ type Station = {
 
 type Bus = {
   busNumber: number,
-  busId: number,
+  totalSeats: number,
+  busId: EntityID,
   departureTime: string,
   arrivalTime: string
   route: Route,
@@ -17,14 +18,37 @@ type Bus = {
 };
 
 type Route = {
- routeId: number,
- fromStation: number | Station,
- toStation:  number | Station,
- distance: number
+  routeId: EntityID,
+  fromStation: number | Station,
+  toStation: number | Station,
+  distance: number
 }
 
 type User = {
   username: string,
   firstName: string,
   lastName: string,
+}
+
+enum BookingStatus {
+  Pending = "PENDING", 
+  Complete = "COMPLETE", 
+  Failure = "FAILURE"
+}
+
+type Booking = {
+  id: EntityID,
+  user: User,
+  busId: EntityID,
+  seatBookings: EntityID,
+  bookingDate: Date,
+  journeyDate: Date,
+  status: BookingStatus
+}
+
+
+type DailyBookingStatus = {
+  busId: number,
+  date: Date,
+  seatsAvailable: number
 }

@@ -7,7 +7,7 @@ import UserPage, {loader as userLoader} from './user/UserPage';
 import UserHistory, {loader as userHistoryLoader} from './user/UserHistory';
 import Browse from './home/Browse';
 import Booking from './booking/Booking'
-import AdminPage, {BusDetailPage, BusPage, RoutesDetailPage, StationDetailPage, UsersPage} from './admin';
+import AdminPage, {AdminHome, BookingDetailPage, BookingPage, BusDetailPage, BusPage, RoutesDetailPage, StationDetailPage, UsersPage} from './admin';
 
 import { StationPage, RoutePage } from './admin';
 import {BookRide} from './booking/BookRide';
@@ -55,6 +55,10 @@ const Routes = () => {
       element: <AdminPage />,
       children: [
         {
+          path: "",
+          element: <AdminHome />
+        },
+        {
           path: "stations",
           element: <StationPage />
         },
@@ -65,6 +69,14 @@ const Routes = () => {
         {
           path: "routes",
           element: <RoutePage />
+        },
+        {
+          path: "bookings",
+          element: <BookingPage />
+        },
+        {
+          path: "bookings/:id",
+          element: <BookingDetailPage />
         },
         {
           path: "routes/:id",
@@ -78,11 +90,6 @@ const Routes = () => {
           path: "buses/:id",
           element: <BusDetailPage />
         },
-        {
-          path: "users",
-          element: <UsersPage />
-        },
-
       ]
     },
     {
