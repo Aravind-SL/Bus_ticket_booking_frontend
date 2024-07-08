@@ -1,9 +1,12 @@
 import { ReactElement } from "react";
-import { FaFacebook, FaTwitter, FaInstagram, FaGithub, FaDiscord } from 'react-icons/fa';
+import { FaFacebook, FaTwitter, FaInstagram, FaWhatsapp } from 'react-icons/fa';
+import {useLocation} from "react-router-dom";
 
 export function Footer(): ReactElement {
-    return (
-        <footer className="py-6 m-0 rounded-lg shadow dark:bg-gray-900">
+  
+  const path = useLocation();
+  return (
+        <footer hidden={path.pathname === '/auth'} className="py-6 m-0 rounded-lg shadow dark:bg-gray-900">
             <div className="w-full mx-10 max-w-screen-xl md:py-4">
                 <div className="sm:flex sm:items-center sm:justify-between">
                     <a href="/home" className="flex items-center mb-2 sm:mb-0 space-x-3 rtl:space-x-reverse">
@@ -30,30 +33,26 @@ export function Footer(): ReactElement {
 
             {/* social media icons */}
 
-            <hr className="mx-12 my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-4" />
-            <span className="block text-sm text-gray-600 sm:text-center dark:text-gray-400">© 2024 <a href="/home" className="hover:underline">BusKaro™</a>. All Rights Reserved.</span>
-
-            <div className="flex justify-center mt-5 space-x-4">
-                <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200">
+            <hr className="mx-8 max-sm:my-4 border-gray-200 sm:mx-auto dark:border-gray-700" />
+            <span className="flex mt-4 justify-center text-base text-gray-600 sm:text-center max-sm:text-sm dark:text-gray-400">© 2024 <a href="/home">&nbsp;NexTrip™</a>. All Rights Reserved.</span>
+            <div className="flex justify-center space-x-4 mt-2 py-2 ">
+                <a href="#" className="hover:-translate-y-1 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200">
+                    <span className="sr-only">WhatsApp</span>
+                    <FaWhatsapp className="w-6 h-6" color='#9e66ff' />
+                </a>
+                <a href="#" className="hover:-translate-y-1 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200">
                     <span className="sr-only">Facebook</span>
                     <FaFacebook className="w-6 h-6" color='#9e66ff' />
                 </a>
-                <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200">
+                <a href="#" className="hover:-translate-y-1 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200">
                     <span className="sr-only">Twitter</span>
                     <FaTwitter className="w-6 h-6" color='#9e66ff' />
                 </a>
-                <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200">
+                <a href="#" className="hover:-translate-y-1 text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200">
                     <span className="sr-only">Instagram</span>
                     <FaInstagram className="w-6 h-6" color='#9e66ff' />
                 </a>
-                <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200">
-                    <span className="sr-only">Github</span>
-                    <FaGithub className="w-6 h-6"  color='#9e66ff'/>
-                </a>
-                <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200">
-                    <span className="sr-only">Discord</span>
-                    <FaDiscord className="w-6 h-6" color='#9e66ff'/>
-                </a>
+               
             </div>
             
         </footer>

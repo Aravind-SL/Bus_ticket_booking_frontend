@@ -69,7 +69,6 @@ const Booking = () => {
 
       <h3 className='mt-4 text-xl font-bold ms-2'>Available Buses</h3>
       <BusRouteList start={start} destination={destination} />
-
     </main>
   );
 };
