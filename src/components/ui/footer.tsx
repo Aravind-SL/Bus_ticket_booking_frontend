@@ -1,9 +1,12 @@
 import { ReactElement } from "react";
 import { FaFacebook, FaTwitter, FaInstagram, FaGithub, FaDiscord } from 'react-icons/fa';
+import {useLocation} from "react-router-dom";
 
 export function Footer(): ReactElement {
-    return (
-        <footer className="py-6 m-0 rounded-lg shadow dark:bg-gray-900">
+  
+  const path = useLocation();
+  return (
+        <footer hidden={path.pathname === '/auth'} className="py-6 m-0 rounded-lg shadow dark:bg-gray-900">
             <div className="w-full mx-10 max-w-screen-xl md:py-4">
                 <div className="sm:flex sm:items-center sm:justify-between">
                     <a href="/home" className="flex items-center mb-2 sm:mb-0 space-x-3 rtl:space-x-reverse">

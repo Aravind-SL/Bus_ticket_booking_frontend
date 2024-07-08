@@ -115,7 +115,7 @@ const Routes = () => {
       element: <>
         <AuthProvider>
             <NavBar />
-              <div className='w-screen min-h-screen bg-gray-100 '>
+              <div className='w-screen min-h-screen '>
                 <Outlet />
               </div>
             <Footer />
