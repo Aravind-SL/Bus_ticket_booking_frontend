@@ -7,6 +7,7 @@ import UserPage from './user/UserPage';
 import UserHistory, {loader as userHistoryLoader} from './user/UserHistory';
 import Browse from './home/Browse';
 import Booking from './booking/Booking'
+import HomePage from './HomePage';
 import AdminPage, {AdminHome, BookingDetailPage, BookingPage, BusDetailPage, BusPage, RoutesDetailPage, StationDetailPage, UsersPage} from './admin';
 
 import { StationPage, RoutePage } from './admin';
@@ -20,7 +21,7 @@ const Routes = () => {
   const notProtectedRoutes = [
     {
       path: "/",
-      element: <div>Home</div>,
+      element: <HomePage />,
       errorElement: <ErrorPage />
     },
     {

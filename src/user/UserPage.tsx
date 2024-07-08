@@ -14,11 +14,9 @@ const UserPage = () => {
 
         <Avatar className="w-16 h-16 border-2 border-primary">
           <AvatarImage src="https://via.placeholder.com/128x128" />
-          <AvatarFallback>@{username}</AvatarFallback>
         </Avatar>
 
         <span className="text-center md:text-left">
-          <p className="text-lg text-foreground">{username}</p>
           <p className="text-muted-foreground">something@mail.ckhjm</p>
         </span>
       </div>
