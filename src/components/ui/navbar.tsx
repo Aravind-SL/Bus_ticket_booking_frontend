@@ -1,37 +1,37 @@
-import {
-    Menubar,
-    MenubarTrigger,
-    MenubarMenu,
-  } from '@/components/ui/menubar';
 import { Button } from '@/components/ui/button';
-import { useState } from 'react'; 
-
+import {useAuth} from '@/auth/AuthProvider';
+import {Link, useLocation} from 'react-router-dom';
 
   
 export default function NavBar() {
-  const [Logged] = useState(false);
+
+  const {token} = useAuth();
+  const path = useLocation();
+
   return(
-      <Menubar className='w-full h-750 flex items-center text-lg px-4 max-sm:flex max-sm:gap-0 bg-[#f5f6f7]'>
-        <MenubarMenu>
-            <MenubarTrigger className='flex-auto md:flex-auto '>
-              <div className="sm:flex-auto sm:items-start sm:justify-between ">
-                <a href="/home" className="flex items-start sm:mb-0 space-x-1.5 max-sm:space-x-1 rtl:space-x-reverse">
-                    <img className='w-20 h-20 max-sm:w-16 bg-inherit' src="src\assets\Bus_Logo.png " alt="NexTrip logo" />
-                    <span className="self-center text-2xl font-bold max-sm:text-lg  dark:text-white">NexTrip</span>
-                </a>
-              </div>
-            </MenubarTrigger> 
+      <header className='border-b-2' hidden={path.pathname === '/auth'}>
+        <div className='container flex items-center w-full font-medium'>
+
+            <div className="sm:flex-auto sm:items-start sm:justify-between">
+              <Link to="/home" className="flex items-start mb-2 sm:mb-0 space-x-3 rtl:space-x-reverse">
+                  <img className='mb-2 w-14 h-14 md:w-12 ' src="https://img.freepik.com/premium-vector/logo-bus-icon-school-bus-vector-isolated-transport-bus-silhouette-design-black-bus_653669-3055.jpg " alt="App logo" />
+                  <span className="self-center text-2xl font-bold whitespace-nowrap dark:text-white">Busy Ah!</span>
+              </Link>
+            </div>
             
-            <MenubarTrigger className='md:text-base max-sm:text-sm '>Home</MenubarTrigger>
-            <MenubarTrigger className='md:text-base max-sm:text-sm '>Browse</MenubarTrigger>
-            <MenubarTrigger className='md:text-base max-sm:text-sm '>Contact</MenubarTrigger>
-            {
-              Logged && <MenubarTrigger className='text-base'>Profile</MenubarTrigger>
+            <nav className='flex items-center w-1/3 h-full text-sm justify-evenly' >
+              {token && <Link to="/home" ><span className='h-full hover:bg-secondary'>Home</span></Link> }
+              <Link to="/book">Book a Ride</Link>
+              <Link to="#">Contact Us</Link>
+            </nav>
+            <Button asChild >
+              {token ? <Link to="/logout">Logout</Link>
+                : <Link to="/auth">Login</Link> }
+            </Button>
+
+        </div>
             
-            }
-            <MenubarTrigger className='text-base sm:text-sm '><Button>Log In / Sign Up</Button></MenubarTrigger>
-        </MenubarMenu>
-      </Menubar>
+      </header>
   );
 }
 

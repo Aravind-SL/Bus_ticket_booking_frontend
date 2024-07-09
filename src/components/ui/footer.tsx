@@ -1,31 +1,33 @@
 import { ReactElement } from "react";
 import { FaFacebook, FaTwitter, FaInstagram, FaWhatsapp } from 'react-icons/fa';
+import {useLocation} from "react-router-dom";
 
 export function Footer(): ReactElement {
-    return (
-        <footer className="bg-[#f5f6f7]  rounded-lg shadow dark:bg-gray-900 m-0">
-            <div className="w-full pl-16 pr-28 mx-0">
-                <div className="w-full flex-row  items-center sm:flex sm:items-center sm:justify-between">
-                    <a href="/home" className="flex items-center max-sm:items-center rtl:space-x-reverse">
-                        <img className='w-36 m-0 max-lg:w-16 py-4 max-sm:px-2 max-sm:w-8/12' src="src\assets\Bus_Logo.png" alt="NexTrip logo" />
-                        <span className="self-center max-sm:justify-center text-4xl font-bold whitespace-nowrap max-sm:text-2xl sm:text-2xl dark:text-white">NexTrip</span>
+  
+  const path = useLocation();
+  return (
+        <footer hidden={path.pathname === '/auth'} className="py-6 m-0 rounded-lg shadow dark:bg-gray-900">
+            <div className="w-full mx-10 max-w-screen-xl md:py-4">
+                <div className="sm:flex sm:items-center sm:justify-between">
+                    <a href="/home" className="flex items-center mb-2 sm:mb-0 space-x-3 rtl:space-x-reverse">
+                        <img className='mb-2 w-14 h-14 md:w-12 ' src="https://img.freepik.com/premium-vector/logo-bus-icon-school-bus-vector-isolated-transport-bus-silhouette-design-black-bus_653669-3055.jpg " alt="BusKaro logo" />
+                        <span className="self-center text-2xl font-bold whitespace-nowrap dark:text-white">BusKaro</span>
                     </a>
-                
-                <ul className="flex justify-center items-center gap-10 text-base font-medium text-gray-900 sm:mb-0 max-sm:text-sm max-md:gap-5  dark:text-gray-400">
+                </div>
+                <ul className="text-base font-medium text-gray-600 grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-x-1 sm:gap-y-4 sm:mb-0 dark:text-gray-400">
                     <li>
-                        <a href="#" className="hover:text-violet-900 me-4 md:me-6">About</a>
+                        <a href="#" className="hover:underline me-4 md:me-6">About</a>
                     </li>
                     <li>
-                        <a href="/browse" className="hover:text-violet-900 me-4 md:me-6">Browse</a>
+                        <a href="/browse" className="hover:underline me-0 md:me-4">Browse</a>
                     </li>
                     <li>
-                        <a href="#" className="hover:text-violet-900 me-4 md:me-6">Privacy Policy</a>
+                        <a href="#" className="hover:underline me-4 md:me-6">Privacy Policy</a>
                     </li>
                     <li>
-                        <a href="#" className="me-4 md:me-6 hover:text-violet-900">Contact</a>
+                        <a href="#" className="hover:underline">Contact</a>
                     </li>
                 </ul>
-                </div>
             </div>
 
 

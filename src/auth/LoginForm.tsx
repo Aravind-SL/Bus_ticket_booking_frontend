@@ -36,7 +36,6 @@ export default function LoginForm() {
 
     async function onSubmit(data: z.infer<typeof LoginFormSchema>){
 
-        // Simulating Login
         try {
             const res: AxiosResponse<AuthResponse> = await axios.post(API_URL + "/api/v1/auth/authenticate", data);
 
@@ -95,7 +94,7 @@ export default function LoginForm() {
                             )}
                         />
                         <Button type="submit" disabled={form.formState.isSubmitting} className="w-full">
-                            {form.formState.isSubmitting && (<ReloadIcon className="mr-2 h-4 w-4 animate-spin"/>)}
+                            {form.formState.isSubmitting && (<ReloadIcon className="w-4 h-4 mr-2 animate-spin"/>)}
                             Log In
                         </Button>
                     </form>
