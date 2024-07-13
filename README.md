@@ -1,30 +1,68 @@
-# React + TypeScript + Vite
+---
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Bus Ticket Booking Frontend
 
-Currently, two official plugins are available:
+This is the frontend part of the Bus Ticket Booking system built with React and TypeScript. The frontend communicates with the backend services to provide a seamless ticket booking experience for users and administrative functionalities.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [Screenshots](#screenshots)
+- [License](#license)
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+To get started with the project, follow these steps:
 
-- Configure the top-level `parserOptions` property like this:
+1. **Clone the repository**
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```sh
+git clone https://github.com/Aravind-SL/bus-ticket-booking-frontend.git
+cd bus-ticket-booking-frontend
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+2. **Install dependencies**
+
+Make sure you have [Node.js](https://nodejs.org/) installed, then run:
+
+```sh
+npm install
+```
+
+## Usage
+
+To start the development server, run:
+
+```sh
+npm run dev
+```
+
+This will start the app on `http://localhost:5173`.
+
+## Running the Backend
+
+Make sure you have the backend services running before starting the frontend. Follow the instructions in the [backend repository](https://github.com/Aravind-SL/bus-ticket-booking-backend) to set up and run the backend.
+
+## Screenshots
+
+Here you can add some screenshots of your application:
+
+- Home Page
+  ![Home Page](https://github.com/user-attachments/assets/5272e2d2-eb9a-4263-864e-df291263ce9c)
+
+- Booking Page
+  ![Booking Page](https://github.com/user-attachments/assets/d67634bf-0156-48ff-8639-6021cc677d43)
+
+
+- Login Page
+  ![Login Page](https://github.com/user-attachments/assets/c661a21d-3aaf-4190-9d8c-c55bd0f51d83)
+
+  
+- Admin Dashboard
+  ![Admin Dashboard](link-to-image)
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](https://opensource.org/license/mit) file for more details.
+
+---
