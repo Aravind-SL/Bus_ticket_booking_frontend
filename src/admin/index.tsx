@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import {Sheet, SheetClose, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger} from "@/components/ui/sheet";
 import {HamburgerMenuIcon} from "@radix-ui/react-icons";
+import {MapPinIcon} from "lucide-react";
 import {Link, Outlet} from "react-router-dom";
 
 export {StationPage} from './Stations';

@@ -7,9 +7,10 @@ interface ListViewProp<T> {
   description?: string,
   items: T[],
   id: (d: T) => string | number
-  label: (d: T) => string | ReactNode
+  label: (d: T) => string | ReactNode,
+  link?: boolean
 }
-export function  ListView<T>({heading, id, items, label, description}: ListViewProp<T>) {
+export function  ListView<T>({heading, id, items, label, description, link = true}: ListViewProp<T>) {
 
   return (
     <>
@@ -19,12 +20,18 @@ export function  ListView<T>({heading, id, items, label, description}: ListViewP
         {
           items.map(e => (
             <li key={id(e)}>
-              <Link to={id(e).toString()} >
+              {link ? 
+                <Link to={id(e).toString()} >
+                  <div className='w-full px-4 py-3 rounded hover:bg-gray-200 transition transition-color bg-background '>
+                    {label(e)}
+                  </div>
+                </Link>
+                :
                 <div className='w-full px-4 py-3 rounded hover:bg-gray-200 transition transition-color bg-background '>
                   {label(e)}
                 </div>
 
-              </Link>
+              }
             </li>
           ))
         }

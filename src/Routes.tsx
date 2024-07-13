@@ -40,16 +40,12 @@ const Routes = () => {
 
   const protectedRoutes = [
     {
-      path: "/home",
-      element: <div>Protected Home</div>
-    },
-    {
       path: "book/:id",
       element: <BookRide />
     },
     {
-      path: "/protected",
-      element: <div>Protected Route</div>
+      path: "/home",
+      element: <UserPage />
     },
     {
       path: "/logout",
@@ -97,17 +93,6 @@ const Routes = () => {
         },
       ]
     },
-    {
-      path: "/user",
-      element: <UserPage />,
-      children: [
-        {
-          path: "history",
-          loader: userHistoryLoader,
-          element: <UserHistory />
-        },
-      ],
-    }
   ];
 
   const router = createBrowserRouter([

@@ -37,13 +37,13 @@ export const BookingPage = () => {
   );
 }
 
-const ColorMap = {
+export const ColorMap = {
   PENDING: "orange",
   COMPLETE: "green",
   FAILURE: "red"
 }
 
-const MessageMap = {
+export const MessageMap = {
   PENDING: "Waiting",
   COMPLETE: "Approved",
   FAILURE: "Rejected"
