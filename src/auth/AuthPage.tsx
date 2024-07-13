@@ -13,10 +13,10 @@ export default function Auth() {
         return (<Navigate to="/home" />);
     }
     return (
-        <div className="w-full h-screen flex md:px-32 items-center justify-center md:justify-start bg-[url('https://via.placeholder.com/1920x1080')] bg-top-right bg-cover">
-            <div className="h-full md:px-6  lg:px-12 flex items-center bg-background/50 backdrop-blur w-full md:w-auto lg:border-x-2 border-secondary">
+        <div className="w-full h-screen flex md:px-32 items-center justify-center md:justify-end bg-[url('/bus.jpg')] bg-top-right bg-cover">
+            <div className="flex items-center w-full h-full md:px-6 lg:px-12 bg-background/30 backdrop-blur-sm md:w-auto lg:border-x-2 border-secondary/40">
                 <Tabs defaultValue="login" className="w-[400px] mx-auto">
-                    <TabsList className="grid w-full grid-cols-2">
+                    <TabsList className="w-full grid grid-cols-2">
                         <TabsTrigger value="login">Log In</TabsTrigger>
                         <TabsTrigger value="signup">Sign Up</TabsTrigger>
                     </TabsList>

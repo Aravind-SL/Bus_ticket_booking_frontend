@@ -20,7 +20,7 @@ export const AdminHome = () => {
       
       {links.map( (li,x)  => (
         <Link to={li.to} key={x}>
-          <div className='py-12 rounded bg-background px-14 hover:bg-muted transition'>
+          <div className='py-12 border-2 rounded border-secondary-foreground px-14 hover:bg-secondary transition'>
             {li.label}
           </div>
         </Link>
