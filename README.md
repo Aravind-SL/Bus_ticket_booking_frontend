@@ -1,4 +1,4 @@
----
+![Screenshot from 2024-07-14 16-56-30](https://github.com/user-attachments/assets/2a6a094e-5c95-42f6-9e87-5705db05490d)---
 
 # Bus Ticket Booking Frontend
 
@@ -49,6 +49,7 @@ Here you can add some screenshots of your application:
 
 - Home Page
   ![Home Page](https://github.com/user-attachments/assets/5272e2d2-eb9a-4263-864e-df291263ce9c)
+  ![User Bookings](https://github.com/user-attachments/assets/c7f49712-059b-4092-bcc7-4bc4a4fed9f9)
 
 - Booking Page
   ![Booking Page](https://github.com/user-attachments/assets/d67634bf-0156-48ff-8639-6021cc677d43)
@@ -59,7 +60,9 @@ Here you can add some screenshots of your application:
 
   
 - Admin Dashboard
-  ![Admin Dashboard](link-to-image)
+  ![Admin Dashboard](https://github.com/user-attachments/assets/81f08690-d867-488a-96fc-3175c3fb90c7)
+  ![Admin Operations](https://github.com/user-attachments/assets/685bbaac-ca85-4aa3-97a4-9bce17d490f0)
+
 
 ## License
 
