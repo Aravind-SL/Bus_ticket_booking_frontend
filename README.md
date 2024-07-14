@@ -1,5 +1,3 @@
-![Screenshot from 2024-07-14 16-56-30](https://github.com/user-attachments/assets/2a6a094e-5c95-42f6-9e87-5705db05490d)---
-
 # Bus Ticket Booking Frontend
 
 This is the frontend part of the Bus Ticket Booking system built with React and TypeScript. The frontend communicates with the backend services to provide a seamless ticket booking experience for users and administrative functionalities.
