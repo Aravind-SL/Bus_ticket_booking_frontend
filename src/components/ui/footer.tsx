@@ -11,7 +11,7 @@ export function Footer(): ReactElement {
                 <div className="sm:flex sm:items-center sm:justify-between">
                     <a href="/home" className="flex items-center mb-2 sm:mb-0 space-x-3 rtl:space-x-reverse">
                         <img className='mb-2 w-14 h-14 md:w-12 ' src="https://img.freepik.com/premium-vector/logo-bus-icon-school-bus-vector-isolated-transport-bus-silhouette-design-black-bus_653669-3055.jpg " alt="BusKaro logo" />
-                        <span className="self-center text-2xl font-bold whitespace-nowrap dark:text-white">BusKaro</span>
+                        <span className="self-center text-2xl font-bold whitespace-nowrap dark:text-white">Busy Ah!</span>
                     </a>
                 </div>
                 <ul className="text-base font-medium text-gray-600 grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-x-1 sm:gap-y-4 sm:mb-0 dark:text-gray-400">
